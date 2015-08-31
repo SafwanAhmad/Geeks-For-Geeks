@@ -2,25 +2,15 @@
  * This program is implemented for problems available on Geeks for Geeks.
  */
 
-#include<stdio.h>
-#include<stdlib.h>
-
-
-//void display(struct LinkedList *header);
-
-
-struct LinkedList
-{
-    int data;
-    struct LinkedList *nextNode;
-};
-
-struct LinkedList *header = NULL; //Initially there is no header, untill the list is initialized.
 
 /**This method will intialize the linked list.
  * The header node will be assigned. This method is automatically called before
  * creation of the linked list.
  */
+#include "LinkedListBasics.h"
+#include "LengthLinkedList.h"
+
+struct LinkedList *header = NULL; //Initially there is no header, untill the list is initialized.
 
 void initializeHeader()
 {
@@ -163,6 +153,10 @@ int main()
     deleteNode(header, 3);
 
     display(header);
+    
+    //Find the length of the Linked List
+    printf("Length = %d\n",LengthLinkedList(header,'I')); //Iterative way
+    printf("Length = %d\n",LengthLinkedList(header, 'R')); //Recursive way	
 }
 
 //Display method
