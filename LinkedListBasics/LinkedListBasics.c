@@ -130,22 +130,14 @@ void deleteNode(struct LinkedList *header, int nodeToBeDeleted)
         return;
     }
 
-    //Otherwise it is an intermediate node
+    //Otherwise it is an intermediate node or the last node
     while(header->nextNode->data != nodeToBeDeleted && header->nextNode != NULL)
     {
         header = header->nextNode;
     }
-    if(header->nextNode != NULL)
-    {
-        temp = header->nextNode;
-        header = temp->nextNode;
-        free(temp);
-    }
-    
-    //It is the last node to be deleted
-    else if(header->nextNode == NULL && 
-    {
-
+    temp = header->nextNode;
+    header->nextNode = temp->nextNode;
+    free(temp);    
 }
 
 //Driver program
@@ -165,6 +157,11 @@ int main()
     insertNewNode(header, 'B', 2, 1);
 
     //Display
+    display(header);
+
+    //Delete the first node
+    deleteNode(header, 3);
+
     display(header);
 }
 
